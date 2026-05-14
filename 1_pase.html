@@ -3,10 +3,10 @@
     <head>
         <meta property="og:title" content="Nuestra Boda Diana & Daniel">
     <meta property="og:description" content="¡Están invitados a celebrar con nosotros nuestra boda!">
-    <meta property="og:image" content="https://diana-y-daniel.github.io/images/portada.jpeg">
+    <meta property="og:image" content="https://diana-y-daniel.github.io/images/1.jpeg">
     <meta property="og:url" content="https://diana-y-daniel.github.io/">
     <meta name="twitter:card" content="summary_large_image">
-     <link rel="icon" type="image/png" href="https://diana-y-daniel.github.io/portada.jpeg">
+     <link rel="icon" type="image/png" href="https://diana-y-daniel.github.io/1.jpeg">
     <title>Nuestra Boda Diana & Daniel</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -225,6 +225,243 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
     </head>
     <body class="page-template page-template-elementor_canvas page page-id-25059 elementor-default elementor-template-canvas elementor-kit-6 elementor-page elementor-page-25059">
+        <!--
+=======================================================
+  SOBRE ELEGANTE — Diana & Daniel
+  Instrucciones: pega justo DESPUÉS de <body ...>
+  Cambia la URL de imagen por la tuya
+=======================================================
+-->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,300&family=Cinzel:wght@400&display=swap');
+
+  body.dd-noscroll { overflow: hidden !important; }
+
+  #dd-sobre {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    overflow: hidden;
+    transition: opacity 1.4s ease;
+  }
+
+  /* Imagen del sobre */
+  #dd-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('/images/cerrado.png');
+    /* ↑ PON AQUÍ LA URL DE TU IMAGEN */
+    background-size: cover;
+    background-position: center center;
+  }
+
+  /* Viñeta */
+  #dd-vignette {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, transparent 38%, rgba(0,0,0,0.5) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  #dd-sobre.dd-salir {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* Texto "Tienes una invitación" arriba */
+  .dd-eyebrow {
+    position: absolute;
+    top: clamp(32px, 9vh, 65px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(9px, 2.5vw, 11px);
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: #d4aa5a;
+    white-space: nowrap;
+    opacity: 0;
+    animation: dd-fade-up 1.2s ease 0.5s forwards;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .dd-eyebrow::before,
+  .dd-eyebrow::after {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 0.5px;
+    background: #d4aa5a;
+    opacity: 0.6;
+  }
+
+  /* Nombres centrados sobre el sello */
+  .dd-nombres {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+    opacity: 0;
+    animation: dd-fade-up 1.2s ease 0.9s forwards;
+  }
+
+  .dd-nombre-texto {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 8vw, 46px);
+    font-weight: 300;
+    font-style: italic;
+    color: #f0e8d0;
+    line-height: 1.05;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  }
+
+  .dd-amp {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 5vw, 28px);
+    color: #d4aa5a;
+    display: block;
+    margin: 0.2rem 0;
+    font-style: normal;
+    font-weight: 300;
+    text-shadow: 0 2px 20px rgba(0,0,0,0.6);
+  }
+
+  .dd-fecha {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(7px, 2vw, 9px);
+    letter-spacing: 0.45em;
+    color: #d4aa5a;
+    display: block;
+    margin-top: 0.8rem;
+    opacity: 0.85;
+  }
+
+  /* Botón abajo */
+  #dd-boton-abrir {
+    position: absolute;
+    bottom: clamp(55px, 13vh, 100px);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    opacity: 0;
+    animation: dd-fade-up 1.2s ease 1.3s forwards;
+    -webkit-tap-highlight-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  #dd-boton-abrir span {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(9px, 2.5vw, 11px);
+    letter-spacing: 0.55em;
+    text-transform: uppercase;
+    color: rgba(212, 170, 90, 0.9);
+    border: 0.5px solid rgba(212, 170, 90, 0.4);
+    padding: 0.85rem 2.8rem;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: block;
+    white-space: nowrap;
+    transition: background 0.3s, border-color 0.3s, color 0.3s;
+  }
+
+  #dd-boton-abrir:hover span,
+  #dd-boton-abrir:active span {
+    background: rgba(212, 170, 90, 0.12);
+    border-color: rgba(212, 170, 90, 0.7);
+    color: #e8c870;
+  }
+
+  .dd-arrow {
+    width: 0.5px;
+    height: 24px;
+    background: linear-gradient(to bottom, rgba(212,170,90,0.7), transparent);
+    animation: dd-pulso 2.2s ease infinite;
+  }
+
+  @keyframes dd-fade-up {
+    from { opacity: 0; transform: translateX(-50%) translateY(16px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
+  .dd-nombres { transform: translate(-50%, -50%); }
+  @keyframes dd-fade-up-center {
+    from { opacity: 0; transform: translate(-50%, calc(-50% + 16px)); }
+    to   { opacity: 1; transform: translate(-50%, -50%); }
+  }
+  .dd-nombres { animation: dd-fade-up-center 1.2s ease 0.9s forwards; }
+
+  @keyframes dd-pulso {
+    0%, 100% { opacity: 0.15; transform: scaleY(0.5); }
+    50%       { opacity: 0.9;  transform: scaleY(1); }
+  }
+</style>
+
+<div id="dd-sobre">
+  <div id="dd-bg"></div>
+  <div id="dd-vignette"></div>
+
+  <p class="dd-eyebrow">Tienes una invitación</p>
+
+  <div class="dd-nombres">
+    <div class="dd-nombre-texto">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      
+    </div>
+    <span style="background-color: #00000052; font-size: 15px;" class="dd-fecha">6 · Junio · 2026</span>
+  </div>
+
+  <button id="dd-boton-abrir"
+          onclick="ddAbrir()"
+          aria-label="Abrir invitación">
+    <span>Abrir Invitación</span>
+    <div class="dd-arrow"></div>
+  </button>
+</div>
+
+<script>
+  (function() {
+    document.body.classList.add('dd-noscroll');
+    var yaAbrio = false;
+
+    window.ddAbrir = function() {
+      if (yaAbrio) return;
+      yaAbrio = true;
+
+      /* Una sola animación: el overlay completo se desvanece */
+      var overlay = document.getElementById('dd-sobre');
+      overlay.classList.add('dd-salir');
+
+      setTimeout(function() {
+        overlay.remove();
+        document.body.classList.remove('dd-noscroll');
+        try {
+          var audio = document.querySelector('audio');
+          if (audio) audio.play();
+        } catch(e) {}
+      }, 1400);
+    };
+  })();
+</script>
+<!-- ═══ FIN DEL SOBRE ═══ -->
         <div data-elementor-type="wp-page" data-elementor-id="25059" class="elementor elementor-25059" data-elementor-post-type="page">
             <section class="elementor-section elementor-top-section elementor-element elementor-element-60e3a925 elementor-section-height-min-height elementor-section-full_width elementor-section-height-default elementor-section-items-middle" data-id="60e3a925" data-element_type="section" data-settings="{&quot;background_background&quot;:&quot;slideshow&quot;,&quot;background_slideshow_transition_duration&quot;:2000,&quot;background_slideshow_gallery&quot;:[{&quot;id&quot;:4676,&quot;url&quot;:&quot;/images/1.jpeg&quot;},{&quot;id&quot;:4681,&quot;url&quot;:&quot;/images/2.jpeg&quot;},{&quot;id&quot;:4682,&quot;url&quot;:&quot;/images/3.jpeg&quot;}],&quot;background_slideshow_slide_duration&quot;:1946,&quot;background_slideshow_ken_burns&quot;:&quot;yes&quot;,&quot;background_slideshow_loop&quot;:&quot;yes&quot;,&quot;background_slideshow_slide_transition&quot;:&quot;fade&quot;,&quot;background_slideshow_ken_burns_zoom_direction&quot;:&quot;in&quot;}">
                 <div class="elementor-background-overlay"></div>
@@ -369,7 +606,7 @@
                                             <div class="ue-audio-controls">
                                                 <div class="ue-audio-player__container ue-audio-player__container--controls">
                                                     <audio class="ue-audio-player-element ue-audio-player-element__controls" autoplay>
-                                                        <source src="/Carlos Rivera - Para Ti (Letra  Lyrics).mp3" type="audio/mp3">
+                                                        <source src="/Marco Antonio Solís - Dios bendiga nuestro amor.mp3" type="audio/mp3">
                                                     </audio>
                                                 </div>
                                             </div>
@@ -451,7 +688,7 @@
            font-style:normal;
            text-transform:none;
            font-size: 35px;">
-    Sergio <br>Corona Barrera 
+    Raúl  <br> Cruz Campos
 </h2>
                                                 </div>
                                             </div>
@@ -463,7 +700,7 @@
            font-style:normal;
            text-transform:none;
            font-size: 35px;">
-                                                        Maria Elena<br>Barrera Guillen
+                                                         María Santos <br> Hernández Aguilar 
                                                     </h2>
                                                 </div>
                                             </div>
@@ -488,7 +725,7 @@
            font-style:normal;
            text-transform:none;
            font-size: 35px;">
-                                                        Raúl<br>Cruz Campos
+                                                        Sergio <br>Corona Barrera
                                                     </h2>
                                                 </div>
                                             </div>
@@ -500,7 +737,7 @@
            font-style:normal;
            text-transform:none;
            font-size: 35px;">
-                                                    María Santos<br>Hernández Aguilar
+                                                    Maria Elena<br>Barrera guillen
 
                                                     </h2>
                                                 </div>
@@ -987,7 +1224,7 @@
                             <div class="elementor-element elementor-element-245ec2d elementor-align-center elementor-widget elementor-widget-button" data-id="245ec2d" data-element_type="widget" data-widget_type="button.default">
                                 <div class="elementor-widget-container">
                                     <div class="elementor-button-wrapper">
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" style="background-color: #b9815c;" href="https://maps.app.goo.gl/kSVkzq4nMZUkCaLA7s">
+                                        <a class="elementor-button elementor-button-link elementor-size-sm" style="background-color: #b9815c;" href="https://maps.app.goo.gl/e1PqavogPnW44pKZ6">
                                             <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text" style="color: white;">IR A MAPS</span>
                                             </span>
@@ -1050,7 +1287,7 @@
                                 <div class="elementor-widget-container">
                                     <h2 class="elementor-heading-title elementor-size-default" style="font-family: 'Times New Roman', Times, serif; color: #a6a08d;">
                                         Quinta las paredes 
-                                        <br>Juárez, 61573 Morelia, Mich.
+                                        <br>Carretera Zitácuaro - Ciudad Altamarino, Benito Juárez, México 61573
                                     </h2>
                                 </div>
                             </div>
@@ -1062,7 +1299,7 @@
                             <div class="elementor-element elementor-element-7510346 elementor-align-center elementor-widget elementor-widget-button" data-id="7510346" data-element_type="widget" data-widget_type="button.default">
                                 <div class="elementor-widget-container">
                                     <div class="elementor-button-wrapper">
-                                        <a class="elementor-button elementor-button-link elementor-size-sm" style="background-color: #b9815c;" href="https://maps.app.goo.gl/nXL4JGrn9CE9YJ5Z6">
+                                        <a class="elementor-button elementor-button-link elementor-size-sm" style="background-color: #b9815c;" href="https://maps.app.goo.gl/mKsavkwqsmj5HoDH8">
                                             <span class="elementor-button-content-wrapper">
                                                 <span class="elementor-button-text" style="color: white;">IR A MAPS</span>
                                             </span>
@@ -1511,31 +1748,7 @@
                                                             <div class="ue_timeline_item_spacer"></div>
                                                         </div>
                                                         
-                                                        <div class="ue_timeline_item elementor-repeater-item-b45ce0c " id="uc_unlimited_timeline_elementor_edcdbed_item11">
-                                                            <div class="ue_timeline_item_content">
-                                                                <div class="ue_timeline_item_content_main">
-                                                                    <div class="ue_timeline_item_content_inside">
-                                                                        <div class="ue_timeline_item_title">Nos despedimos</div>
-                                                                        <div class="ue_timeline_item_text">
-                                                                            <p style="color: #b9815c;">02:00  hrs.</p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="ue_timeline_item_pointer_spacer"></div>
-                                                            </div>
-                                                            <div class="ue_timeline_item_icon">
-                                                                <div class="ue_timeline_item_icon_line_offset">
-                                                                    <div class="ue_timeline_item_icon_line_offset_mask"></div>
-                                                                </div>
-                                                                <div class="ue_timeline_item_icon_holder">
-                                                                    <i class='far fa-heart'></i>
-                                                                </div>
-                                                                <div class="ue_timeline_item_icon_line">
-                                                                    <div class="ue_timeline_item_icon_line_mask"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="ue_timeline_item_spacer"></div>
-                                                        </div>
+                                                        
                                                     </div>
                                                     <!-- end Unlimited Timeline -->
                                                 </div>
@@ -1944,37 +2157,56 @@ document.addEventListener("DOMContentLoaded", function () {
                                     </div>
                                 </div>
                             </div>
-                            <section class="elementor-section elementor-inner-section elementor-element elementor-element-fa40a25 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="fa40a25" data-element_type="section">
-                                <div class="elementor-container elementor-column-gap-default">
-                                    <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-484e587" data-id="484e587" data-element_type="column">
-                                        <div class="elementor-widget-wrap elementor-element-populated">
-                                            <div class="elementor-element elementor-element-0aedc96 elementor-view-default elementor-invisible elementor-widget elementor-widget-icon" data-id="0aedc96" data-element_type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeInDown&quot;}" data-widget_type="icon.default">
-                                                <div class="elementor-widget-container">
-                                                    <div class="elementor-icon-wrapper">
-                                                        <div class="elementor-icon">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" style="fill: #A6A08D;">
-                                                                <title>envelope-letter-love-wedding-married</title>
-                                                                <g id="outline">
-                                                                    <path d="M31.241,38.706a1,1,0,0,0,.707.294h0a1,1,0,0,0,.706-.292L42.98,28.421a6.25,6.25,0,1,0-9.412-8.178L32,22.333l-1.562-2.082A6.259,6.259,0,1,0,21,28.425ZM22.419,21a4.258,4.258,0,0,1,3.012-1.247c.1,0,.2,0,.3.01a4.257,4.257,0,0,1,3.105,1.693L31.2,24.6a1.036,1.036,0,0,0,1.6,0l2.367-3.157A4.251,4.251,0,1,1,41.568,27l-9.616,9.582-9.538-9.573A4.265,4.265,0,0,1,22.419,21Z"></path>
-                                                                    <path d="M61.879,28.541a.987.987,0,0,0-.233-.3l-.008-.011L54,21.909V7a1,1,0,0,0-1-1H34.777L32.638,4.229a1,1,0,0,0-1.276,0L29.223,6H11a1,1,0,0,0-1,1V21.909l-7.638,6.32-.008.011a.987.987,0,0,0-.233.3.816.816,0,0,0-.036.08A.975.975,0,0,0,2,29V61a1,1,0,0,0,1,1H61a1,1,0,0,0,1-1V29a.975.975,0,0,0-.085-.379A.816.816,0,0,0,61.879,28.541ZM59.431,29,54,33.495v-8.99ZM12,8H52V35.15L32,51.7,12,35.15V8ZM10,33.495,4.569,29,10,24.505ZM4,60V31.126l6.362,5.265,21,17.38a1,1,0,0,0,1.276,0l21-17.38L60,31.126V60Z"></path>
-                                                                </g>
-                                                            </svg>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="elementor-element elementor-element-0414792 elementor-invisible elementor-widget elementor-widget-heading" data-id="0414792" data-element_type="widget" data-settings="{&quot;_animation_mobile&quot;:&quot;fadeInDown&quot;,&quot;_animation&quot;:&quot;fadeInUp&quot;}" data-widget_type="heading.default">
-                                                <div class="elementor-widget-container">
-                                                    <h2 class="elementor-heading-title elementor-size-default" style="font-family: 'Times New Roman', Times, serif;">
-                                                        ¡Lluvia de Sobres!<br>
-                                                        <br>La lluvia de sobres es la tradición de regalar dinero en efectivo dentro de un sobre el día del evento.
-                                                    </h2>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
+                            <section class="elementor-section elementor-inner-section elementor-element elementor-element-fa40a25 elementor-section-boxed elementor-section-height-default elementor-section-height-default" data-id="fa40a25" data-element_type="section"> 
+    <div class="elementor-container elementor-column-gap-default">
+        <div class="elementor-column elementor-col-25 elementor-inner-column elementor-element elementor-element-484e587" data-id="484e587" data-element_type="column">
+            <div class="elementor-widget-wrap elementor-element-populated">
+
+                <!-- ICONO -->
+                <div class="elementor-element elementor-element-0aedc96 elementor-view-default elementor-invisible elementor-widget elementor-widget-icon" 
+                     data-id="0aedc96" 
+                     data-element_type="widget" 
+                     data-settings="{&quot;_animation&quot;:&quot;fadeInDown&quot;}" 
+                     data-widget_type="icon.default">
+                    <div class="elementor-widget-container">
+                        <div class="elementor-icon-wrapper">
+                            <div class="elementor-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" style="fill: #A6A08D;">
+                                    <title>envelope-letter-love-wedding-married</title>
+                                    <g id="outline">
+                                        <path d="M31.241,38.706a1,1,0,0,0,.707.294h0a1,1,0,0,0,.706-.292L42.98,28.421a6.25,6.25,0,1,0-9.412-8.178L32,22.333l-1.562-2.082A6.259,6.259,0,1,0,21,28.425ZM22.419,21a4.258,4.258,0,0,1,3.012-1.247c.1,0,.2,0,.3.01a4.257,4.257,0,0,1,3.105,1.693L31.2,24.6a1.036,1.036,0,0,0,1.6,0l2.367-3.157A4.251,4.251,0,1,1,41.568,27l-9.616,9.582-9.538-9.573A4.265,4.265,0,0,1,22.419,21Z"></path>
+                                        <path d="M61.879,28.541a.987.987,0,0,0-.233-.3l-.008-.011L54,21.909V7a1,1,0,0,0-1-1H34.777L32.638,4.229a1,1,0,0,0-1.276,0L29.223,6H11a1,1,0,0,0-1,1V21.909l-7.638,6.32-.008.011a.987.987,0,0,0-.233.3.816.816,0,0,0-.036.08A.975.975,0,0,0,2,29V61a1,1,0,0,0,1,1H61a1,1,0,0,0,1-1V29a.975.975,0,0,0-.085-.379A.816.816,0,0,0,61.879,28.541ZM59.431,29,54,33.495v-8.99ZM12,8H52V35.15L32,51.7,12,35.15V8ZM10,33.495,4.569,29,10,24.505ZM4,60V31.126l6.362,5.265,21,17.38a1,1,0,0,0,1.276,0l21-17.38L60,31.126V60Z"></path>
+                                    </g>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TEXTO -->
+                <div class="elementor-element elementor-element-0414792 elementor-invisible elementor-widget elementor-widget-heading" 
+                     data-id="0414792" 
+                     data-element_type="widget" 
+                     data-settings="{&quot;_animation_mobile&quot;:&quot;fadeInDown&quot;,&quot;_animation&quot;:&quot;fadeInUp&quot;}" 
+                     data-widget_type="heading.default">
+                    <div class="elementor-widget-container">
+                        <h2 class="elementor-heading-title elementor-size-default" 
+                            style="font-family: 'Times New Roman', Times, serif; text-align: center; line-height: 1.8;">
+                            
+                            Lluvia de sobres 
+                            <br>
+                            Su presencia en este día tan especial es nuestro mejor regalo.
+                            <br><br>
+                            Si desean tener un detalle adicional, cualquier muestra de cariño será recibida con mucho agradecimiento.
+                            
+                        </h2>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
                             <div class="elementor-element elementor-element-e83382a elementor-widget elementor-widget-image" data-id="e83382a" data-element_type="widget" data-widget_type="image.default">
                                 <div class="elementor-widget-container">
                                     <img decoding="async" width="800" height="229" src="https://operacionboda.mx/wp-content/uploads/2023/08/Separador-Premium.png" class="attachment-large size-large wp-image-1007" alt="" srcset="https://operacionboda.mx/wp-content/uploads/2023/08/Separador-Premium.png 875w, https://operacionboda.mx/wp-content/uploads/2023/08/Separador-Premium-300x86.png 300w, https://operacionboda.mx/wp-content/uploads/2023/08/Separador-Premium-768x219.png 768w" sizes="(max-width: 800px) 100vw, 800px"/>
